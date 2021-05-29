@@ -1,3 +1,4 @@
+import Main from "../main";
 import Footer from "./footer";
 import Header from "./header";
 
@@ -5,7 +6,7 @@ const Home = () => {
   return (
     <>
       <Header/>
-      <h1>Home</h1>
+      <Main />
       <Footer />
     </>
   )

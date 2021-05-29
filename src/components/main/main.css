@@ -1,0 +1,37 @@
+main {
+  min-height: 80vh;
+  overflow-x: scroll;
+}
+.main-container {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+.main-container > .section {
+  flex: 50%;
+  padding: 10%;
+  border: 1px solid;
+}
+.main-container > .cart-container {
+  
+}
+.main-container > .products-container {
+  min-height: 400px;
+  overflow: hidden;
+  overflow-y: scroll;
+  height: 500px;
+}
+@media only screen and (max-width: 780px) {
+  .main-container {
+    flex-direction: column;
+  }
+  .main-container > .section {
+    flex:auto
+  }
+  .main-container > .products-container {
+    min-height: 200px;
+    overflow: hidden;
+    overflow-y: scroll;
+    height: 300px;
+  }
+}
