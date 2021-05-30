@@ -1,6 +1,6 @@
 # Instructions to run app
 
-    *npm install*
-    *npm start*
+    npm install
+    npm start
 
-app will start on (localhost)[localhost:3000]
+app will start on [localhost](http://localhost:3000)
