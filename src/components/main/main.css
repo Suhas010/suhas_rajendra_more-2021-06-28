@@ -9,17 +9,21 @@ main {
 }
 .main-container > .section {
   flex: 50%;
-  padding: 10%;
   border: 1px solid;
 }
 .main-container > .cart-container {
   
 }
-.main-container > .products-container {
+.products-container {
   min-height: 400px;
   overflow: hidden;
   overflow-y: scroll;
   height: 500px;
+  padding: 5%;
+  margin: 1%;
+}
+.actions {
+  padding: 1%;
 }
 @media only screen and (max-width: 780px) {
   .main-container {

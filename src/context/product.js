@@ -33,6 +33,19 @@ function ProductProvider({ ...props}) {
             status: STATUS.PENDING,
           }
         }
+        case ACTIONS.PRODUCT_CHECKED: {
+          return {
+            ...state,
+            selected : [...state.selected, action.payload]
+          }
+        }
+        case ACTIONS.PRODUCT_UNCHECKED: {
+          let { selected } = state;
+          return {
+            ...state,
+            selected: selected.filter(({id}) => id !== action.id)
+          }
+        }
       }
     },
     initialProductState,

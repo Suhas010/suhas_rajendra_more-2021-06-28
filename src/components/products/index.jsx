@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import Button from '../../common/Button';
 import { useProduct } from '../../context/product';
 import { ACTIONS, STATUS } from '../../utils/constants';
 import Product from './product';
@@ -19,19 +20,43 @@ const ProductsList = () => {
     getData()
   }, [])
 
-  const {error, status, data}  = state;
+  const {error, status, data, selected}  = state;
   const isLoading = status === STATUS.IDLE || status === STATUS.PENDING;
-  const isResolved = status === STATUS.RESOLVED;
   const isRejected = status === STATUS.REJECTED;
+  const disabled = !selected.length;
   if(isLoading) {
     return <h2>Loading ....</h2>
   }
   if(isRejected) {
     return <h2>Error</h2>
   }
+
+  
+  const onChecked = ({target: {checked, name, id}}) => {
+    if(checked)
+      dispatch({type: ACTIONS.PRODUCT_CHECKED, payload: {checked, id, name}})
+    if(!checked)
+      dispatch({type: ACTIONS.PRODUCT_UNCHECKED, id})
+  }
+  const handleAddToCart = (e) => {
+    console.log(e)
+  }
+  console.log(state)
   return (
-    <div className="section products-container">
-      {data.map((product) => <Product key={product.id} {...product} />)}
+    <div className="section">
+      <div className="header">
+        Search
+      </div>
+      <div className="products-container ">
+        {data.map((product) => <Product key={product.id} onChecked={onChecked} {...product} />)}
+      </div>
+      <div className="actions">
+        <Button
+          name="Add to cart"
+          handleClick={handleAddToCart}
+          disabled={disabled}
+        />
+      </div>
     </div>
   )
 }

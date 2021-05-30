@@ -1,4 +1,10 @@
 .entry {
   padding: 10px 0px;
   border-bottom: 1px solid;
+  display: flex;
+}
+label {
+  display: block;
+  cursor: pointer;
+  width: 100%;
 }
