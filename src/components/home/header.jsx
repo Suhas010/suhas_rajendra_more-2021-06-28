@@ -2,7 +2,7 @@ import { useContext } from "react";
 import Image from "../../common/Image";
 import moon from '../../assets/moon.svg';
 import sun from '../../assets/sun.svg';
-import ThemeContext from "../../context/teme";
+import ThemeContext from "../../context/theme";
 
 const Header = () => {
   const { dark, toggle } = useContext(ThemeContext);

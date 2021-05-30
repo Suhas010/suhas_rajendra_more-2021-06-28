@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import Home from './components/home';
 import reportWebVitals from './reportWebVitals';
-import { ThemeProvider } from './context/teme';
+import { ThemeProvider } from './context/theme';
 
 ReactDOM.render(
   <React.StrictMode>
