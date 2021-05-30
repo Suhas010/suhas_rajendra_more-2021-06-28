@@ -5,7 +5,8 @@ const ProductContext = React.createContext()
 
 const initialProductState = {
   data: [],
-  status: STATUS.IDLE
+  status: STATUS.IDLE,
+  search: ''
 }
 const updateData = (arr, {id,checked}) => arr.map((item) => {
   if(item.id == id) {
@@ -52,6 +53,12 @@ function ProductProvider({ ...props}) {
           return {
             ...state,
             data: state.data.map((item) => {item.checked = false; return item})
+          }
+        }
+        case ACTIONS.FILTER_PRODUCT: {
+          return {
+            ...state,
+            search: action.search
           }
         }
       }
