@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { ACTIONS, STATUS } from '../utils/constants'
+import { ACTIONS } from '../utils/constants'
 const CartContext = React.createContext()
 
 const initialCartState = {
