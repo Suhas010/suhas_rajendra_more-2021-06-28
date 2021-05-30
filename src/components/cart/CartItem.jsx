@@ -1,7 +1,7 @@
 import { currency } from "../../utils/helper";
 
-const CartItem = ({id, name, count, price}) => (
-  <div className="cart-item" key={id}>
+const CartItem = ({id, name, count, price, color}) => (
+  <div className="cart-item" key={id} style={{backgroundColor: color}}>
     <div className="id">{id}</div>
     <div className="cart-name">
         <div>

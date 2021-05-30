@@ -1,6 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
 * {
   box-sizing: border-box;
+}
+
+:root {
+  --button-color: #ff9f9f;
 }
 body {
   margin: 0;
@@ -12,9 +17,11 @@ body {
 }
 button {
   padding: 10px;
-  background-color: white;
+  background-color: var(--button-color);
   border: 1px solid;
   width: 100%;
+  color: black;
+  font-weight: 500;
 }
 button:hover {
   cursor: pointer;
@@ -22,6 +29,7 @@ button:hover {
 }
 button:disabled {
   cursor:not-allowed;
+  background-color: gainsboro;
   opacity: 0.6;
 }
 

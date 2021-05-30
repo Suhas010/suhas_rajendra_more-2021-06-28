@@ -1,7 +1,7 @@
 
 const Button = ({name, handleClick, type, ...rest}) => (
   <button
-    className={`button ${type}`}
+    className={`button`}
     onClick={handleClick}
     {...rest}
   >
