@@ -11,10 +11,7 @@ main {
   flex: 50%;
   border: 1px solid;
 }
-.main-container > .cart-container {
-  
-}
-.products-container {
+.cart-container, .products-container {
   min-height: 400px;
   overflow: hidden;
   overflow-y: scroll;
