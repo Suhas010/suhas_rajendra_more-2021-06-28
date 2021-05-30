@@ -26,7 +26,6 @@ export function ThemeProvider({ children }) {
   }, [dark]);
 
   const toggle = () => {
-    console.log("toggle")
     const body = document.getElementsByTagName('body')[0];
     body.style.cssText = 'transition: background .5s ease';
     setDark(!dark);
