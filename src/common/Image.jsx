@@ -1,5 +1,5 @@
 
-const Image = ({ src, ...rest }) => (
-  <img src={src} {...rest} />
+const Image = ({ src, alt, ...rest }) => (
+  <img src={src} alr={alt} {...rest} />
 );
 export default Image;
