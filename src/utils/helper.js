@@ -14,3 +14,9 @@ export const currency = (number) => new Intl.NumberFormat("en-IN", {
   currency: "INR",
   minimumFractionDigits: 2,
 }).format(number);
+
+export const getRandomArbitrary = (min, max) => {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}

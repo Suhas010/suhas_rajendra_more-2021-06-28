@@ -1,5 +1,6 @@
 import * as React from 'react'
-import { ACTIONS, STATUS } from '../utils/constants'
+import { ACTIONS, COLORS, STATUS } from '../utils/constants'
+import { getRandomArbitrary } from '../utils/helper'
 const ProductContext = React.createContext()
 
 const initialProductState = {
@@ -20,7 +21,10 @@ function ProductProvider({ ...props}) {
           return {
             ...state,
             status: STATUS.RESOLVED,
-            data: action.data,
+            data: action.data.map((item)=> {
+              item.color = COLORS[getRandomArbitrary(0, 7)]
+              return item;
+            }),
           }
         }
         case ACTIONS.PRODUCT_ERROR: {

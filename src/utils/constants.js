@@ -17,19 +17,13 @@ export const STATUS = {
   PENDING: "PENDING"
 }
 
+export const COLORS = ["aquamarine", "#fdff7f94", "#ffc67f8f", "#7fe8ff8f", "#a47fff6e", "#ff7ffb6e", "#ff7fa36e", "#c2ff7f6e"]
+
 // styles
 export const LIGHT = [
-  '--app-background: white',
-  '--text-color: black',
-  '--slider-color: #00000075',
-  '--section-border: red',
-  '--table-row: #dddddd',
+  '--button-color: #ff9f9f',
 ];
 
 export const DARK = [
-  '--app-background: black',
-  '--text-color: white',
-  '--slider-color: #f5e9e975',
-  '--section-border: pink',
-  '--table-row: #454328',
+  '--button-color: #9fffdf',
 ];

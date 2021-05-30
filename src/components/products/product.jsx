@@ -1,8 +1,8 @@
+import { memo } from "react"
 import { currency } from "../../utils/helper"
-import Image from "../../common/Image";
 
-const Product = ({name, price, id, createdAt, onChecked, checked}) => (
-  <div key={id} className="entry">
+const Product = ({name, price, id, createdAt, onChecked, checked, color}) => (
+  <div key={id} className="entry" style={{backgroundColor: color}}>
     <input
       type="checkbox"
       checked={!!checked}
@@ -22,4 +22,4 @@ const Product = ({name, price, id, createdAt, onChecked, checked}) => (
   </div>
 )
 
-export default Product
+export default memo(Product)
