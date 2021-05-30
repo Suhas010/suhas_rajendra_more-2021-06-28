@@ -12,7 +12,7 @@ const Product = ({name, price, id, createdAt, onChecked, checked, color}) => (
       onChange={onChecked}
       className="checkbox"
     />
-    <label for={id}>
+    <label htmlFor={id}>
       <span>{name}</span><br/>
       <span className="information">{currency(price)}</span>
       <span className="information createdat">{new Date(createdAt).toString().split("GMT")[0]}</span>

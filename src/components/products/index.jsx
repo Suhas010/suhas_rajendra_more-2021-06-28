@@ -3,8 +3,8 @@ import { useEffect } from 'react';
 import {Button, Info, Loading, SearchBox} from '../../common'
 import { useCart } from '../../context/cart';
 import { useProduct } from '../../context/product';
-import { ACTIONS, COLORS, STATUS } from '../../utils/constants';
-import { debounce, getRandomArbitrary } from '../../utils/helper';
+import { ACTIONS, STATUS } from '../../utils/constants';
+import { debounce } from '../../utils/helper';
 import Product from './product';
 import './products.css';
 
@@ -44,9 +44,11 @@ const ProductsList = () => {
 
 
   let {error, status, data, search}  = state;
+  // filter products based on search term
   if(search || search.length >0) {
     data = data.filter(({name}) => name.toLowerCase().indexOf(search.toLowerCase())>-1)
   }
+
   const isLoading = status === STATUS.IDLE || status === STATUS.PENDING;
   const isRejected = status === STATUS.REJECTED;
   const disabled = !data.filter((item) => item.checked).length;
