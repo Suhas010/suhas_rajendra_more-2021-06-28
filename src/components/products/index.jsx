@@ -28,8 +28,8 @@ const ProductsList = () => {
   }, [])
 
 
-  const onChecked = ({target}) => {
-    dispatch({type: ACTIONS.PRODUCT_CHECKED, payload:target})
+  const handleToggle = ({target}) => {
+    dispatch({type: ACTIONS.PRODUCT_TOGGLE, payload:target})
   
   }
 
@@ -72,7 +72,7 @@ const ProductsList = () => {
     return data.map((product) => (
       <Product 
         key={product.id}
-        onChecked={onChecked}
+        handleToggle={handleToggle}
         {...product}
       />
     ))

@@ -1,19 +1,22 @@
-import * as React from 'react'
-import { ACTIONS, COLORS, STATUS } from '../utils/constants'
-import { getRandomArbitrary } from '../utils/helper'
-const ProductContext = React.createContext()
+import * as React from 'react';
+import { ACTIONS, COLORS, STATUS } from '../utils/constants';
+import { getRandomArbitrary } from '../utils/helper';
+
+const ProductContext = React.createContext();
 
 const initialProductState = {
   data: [],
   status: STATUS.IDLE,
   search: ''
 }
+
 const updateData = (arr, {id,checked}) => arr.map((item) => {
   if(item.id == id) {
     item.checked = checked;
   }
   return item;
 })
+
 function ProductProvider({ ...props}) {
   const [state, dispatch] = React.useReducer(
     (state, action) => {
@@ -42,7 +45,7 @@ function ProductProvider({ ...props}) {
             status: STATUS.PENDING,
           }
         }
-        case ACTIONS.PRODUCT_CHECKED: {
+        case ACTIONS.PRODUCT_TOGGLE: {
           return {
             ...state,
             data : updateData(state.data, action.payload)
@@ -55,6 +58,7 @@ function ProductProvider({ ...props}) {
             data: state.data.map((item) => {item.checked = false; return item})
           }
         }
+
         case ACTIONS.FILTER_PRODUCT: {
           return {
             ...state,
@@ -66,7 +70,7 @@ function ProductProvider({ ...props}) {
     initialProductState,
   )
 
-  const value = [state, dispatch]
+  const value = [state, dispatch];
   return <ProductContext.Provider value={value} {...props} />
 }
 
