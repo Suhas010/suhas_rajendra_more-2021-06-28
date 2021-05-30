@@ -14,14 +14,6 @@ const Cart = () => {
     alert("Thank you for, Shopping with us! __/\\__ ")
     dispach({type: ACTIONS.CLEAR_CART});
   }
-
-  if(!data || !Object.keys(data).length) return (
-      <Info
-        title="Empty Cart"
-        type="info"
-        message="Seems like you have not added anything to cart yet.."
-      />
-  )
   
   let total = 0;
   const renderCartItem = () => {
@@ -37,6 +29,8 @@ const Cart = () => {
     )
   }
 
+  const isEmpty = !data || !Object.keys(data).length;
+
   return (
     <div className="section">
       <div className="header">
@@ -45,20 +39,31 @@ const Cart = () => {
           {Object.keys(data).length} Unique Items
         </div>
       </div>
-      <div className="cart-container">
-        {renderCartItem()}
-      </div>
-      <div className="footer">
-        <div className="total">
-          Total Payeble: {currency(total)}
+      {isEmpty && (
+        <Info
+          title="Empty Cart"
+          type="info"
+          message="Seems like you have not added anything to cart yet.."
+        />
+      )}
+      {!isEmpty && (
+        <>
+        <div className="cart-container">
+          {renderCartItem()}
         </div>
-        <div className="actions">
-          <Button
-            name="Place order"
-            handleClick={handlePlaceOrder}
-          />
+        <div className="footer">
+          <div className="total">
+            Total Payeble: {currency(total)}
+          </div>
+          <div className="actions">
+            <Button
+              name="Place order"
+              handleClick={handlePlaceOrder}
+            />
+          </div>
         </div>
-      </div>
+        </>
+      )}
     </div>
   )
 }
