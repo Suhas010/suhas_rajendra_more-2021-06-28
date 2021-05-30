@@ -9,6 +9,20 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+button {
+  padding: 10px;
+  background-color: white;
+  border: 1px solid;
+  width: 100%;
+}
+button:hover {
+  cursor: pointer;
+  opacity: 0.6;
+}
+button:disabled {
+  cursor:not-allowed;
+  opacity: 0.6;
+}
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
