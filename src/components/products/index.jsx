@@ -1,14 +1,13 @@
 import { useEffect } from 'react';
-import Button from '../../common/Button';
-import Info from '../../common/Error';
-import Loading from '../../common/Loading';
-import SearchBox from '../../common/SearchBox';
+
+import {Button, Info, Loading, SearchBox} from '../../common'
 import { useCart } from '../../context/cart';
 import { useProduct } from '../../context/product';
 import { ACTIONS, COLORS, STATUS } from '../../utils/constants';
 import { debounce, getRandomArbitrary } from '../../utils/helper';
 import Product from './product';
-import './products.css'
+import './products.css';
+
 const ProductsList = () => {
 
   const [state, dispatch] = useProduct();
@@ -63,20 +62,24 @@ const ProductsList = () => {
       />
     )
   }
-  console.log(getRandomArbitrary(0,7), COLORS[getRandomArbitrary(0, 7)])
+
+  const renderProduct = () => {
+    return data.map((product) => (
+      <Product 
+        key={product.id}
+        onChecked={onChecked}
+        {...product}
+      />
+    ))
+  }
+
   return (
     <div className="section">
       <div className="header">
         <SearchBox handleSearch={handleSearch}/>
       </div>
       <div className="products-container ">
-        {data.map((product) => (
-          <Product 
-            key={product.id}
-            onChecked={onChecked}
-            {...product}
-          />
-        ))}
+        {renderProduct()}
       </div>
       <div className="actions product">
         <Button

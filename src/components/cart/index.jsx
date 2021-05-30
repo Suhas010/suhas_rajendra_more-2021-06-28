@@ -1,15 +1,18 @@
-import Button from "../../common/Button";
-import Info from "../../common/Error";
+import {Info, Button} from "../../common";
+// import Info from "../../common/Error";
 import { useCart } from "../../context/cart"
+import { ACTIONS } from "../../utils/constants";
 import { currency } from "../../utils/helper";
 import CartItem from "./CartItem";
 import './index.css'
+
 const Cart = () => {
   const [state, dispach] = useCart();
   const {data} = state;
 
   const handlePlaceOrder = () => {
-    console.log("object")
+    alert("Thank you for, Shopping with us! __/\\__ ")
+    dispach({type: ACTIONS.CLEAR_CART});
   }
 
   if(!data || !Object.keys(data).length) return (
@@ -19,8 +22,21 @@ const Cart = () => {
         message="Seems like you have not added anything to cart yet.."
       />
   )
-  console.log(data, data.length)
+  
   let total = 0;
+  const renderCartItem = () => {
+    return Object.entries(data).map(([id,{color, ...rest}], index) => {
+      total += rest.price  * rest.count;
+      return (
+        <CartItem 
+          id={id}
+          color={index%2===0 ? '#defad7' : '#faefd7'}
+          {...rest}
+        />
+      )}
+    )
+  }
+
   return (
     <div className="section">
       <div className="header">
@@ -30,12 +46,7 @@ const Cart = () => {
         </div>
       </div>
       <div className="cart-container">
-        {Object.entries(data).map(([id,{color, ...rest}], index) => {
-          total += rest.price  * rest.count
-          return (
-            <CartItem id={id} color={index%2===0 ? '#defad7' : '#faefd7'} {...rest}/>
-          )}
-        )}
+        {renderCartItem()}
       </div>
       <div className="footer">
         <div className="total">
@@ -51,4 +62,5 @@ const Cart = () => {
     </div>
   )
 }
+
 export default Cart

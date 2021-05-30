@@ -40,20 +40,13 @@ function CartProvider({ ...props}) {
             data: getCartData(state.data, action.payload)
           }
         }
-        case ACTIONS.REMOVE_FROM_CART: {
+        case ACTIONS.CLEAR_CART: {
           return {
             ...state,
-            data: [],
-            status: STATUS.REJECTED,
-            error: action.error
+            data: {}
           }
         }
-        case ACTIONS.PRODUCT_FETCHING: {
-          return {
-            ...state,
-            status: STATUS.PENDING,
-          }
-        }
+        
       }
     },
     initialCartState,
