@@ -8,3 +8,9 @@ export const debounce = function (func, delay) {
     }, delay);
   };
 };
+
+export const currency = (number) => new Intl.NumberFormat("en-IN", {
+  style: 'currency',
+  currency: "INR",
+  minimumFractionDigits: 2,
+}).format(number);

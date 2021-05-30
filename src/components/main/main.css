@@ -2,15 +2,17 @@ main {
   min-height: 80vh;
   overflow-x: scroll;
 }
+
 .main-container {
   display: flex;
   justify-content: space-between;
   flex-direction: row;
 }
 .main-container > .section {
-  
-  flex: 50%;
-  border: 1px solid;
+  margin: 2%;
+  flex: 50% 1;
+  padding: 2%;
+  border: 1px solid #e0dddd;
 }
 .cart-container, .products-container {
   overflow: hidden;
@@ -20,6 +22,17 @@ main {
   padding: 5%;
   margin: 1%;
 }
+
+.header {
+  text-align: center;
+  height: 50px;
+  width: 100%;
+}
+.header > input {
+  width: 75%;
+  height: 40px;
+}
+
 .actions {
   padding: 1%;
 }

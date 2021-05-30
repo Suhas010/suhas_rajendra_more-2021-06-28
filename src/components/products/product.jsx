@@ -1,4 +1,7 @@
-const Product = ({name, price, id, onChecked, checked}) => (
+import { currency } from "../../utils/helper"
+import Image from "../../common/Image";
+
+const Product = ({name, price, id, createdAt, onChecked, checked}) => (
   <div key={id} className="entry">
     <input
       type="checkbox"
@@ -6,12 +9,16 @@ const Product = ({name, price, id, onChecked, checked}) => (
       id={id}
       name={name}
       value={name}
-      onChange={onChecked}  
+      onChange={onChecked}
+      className="checkbox"
     />
     <label for={id}>
       <span>{name}</span><br/>
-      <span>{price}</span>
+      <span className="information">{currency(price)}</span>
+      <span className="information createdat">{new Date(createdAt).toString().split("GMT")[0]}</span>
+
     </label>
+    
   </div>
 )
 
