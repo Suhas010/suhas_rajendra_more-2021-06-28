@@ -36,6 +36,9 @@ main {
 .actions {
   padding: 1%;
 }
+.product > button {
+  margin-top: 7%;
+}
 @media only screen and (max-width: 780px) {
   .main-container {
     flex-direction: column;

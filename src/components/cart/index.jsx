@@ -26,14 +26,14 @@ const Cart = () => {
       <div className="header">
         <h3>Cart Details</h3>
         <div className="sub-header">
-          {Object.keys(data).length} Uniqu Items
+          {Object.keys(data).length} Unique Items
         </div>
       </div>
       <div className="cart-container">
-        {Object.entries(data).map(([id,{...rest}]) => {
+        {Object.entries(data).map(([id,{color, ...rest}], index) => {
           total += rest.price  * rest.count
           return (
-            <CartItem id={id} {...rest}/>
+            <CartItem id={id} color={index%2===0 ? '#defad7' : '#faefd7'} {...rest}/>
           )}
         )}
       </div>

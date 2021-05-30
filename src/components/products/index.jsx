@@ -5,8 +5,8 @@ import Loading from '../../common/Loading';
 import SearchBox from '../../common/SearchBox';
 import { useCart } from '../../context/cart';
 import { useProduct } from '../../context/product';
-import { ACTIONS, STATUS } from '../../utils/constants';
-import { debounce } from '../../utils/helper';
+import { ACTIONS, COLORS, STATUS } from '../../utils/constants';
+import { debounce, getRandomArbitrary } from '../../utils/helper';
 import Product from './product';
 import './products.css'
 const ProductsList = () => {
@@ -63,16 +63,22 @@ const ProductsList = () => {
       />
     )
   }
-
+  console.log(getRandomArbitrary(0,7), COLORS[getRandomArbitrary(0, 7)])
   return (
     <div className="section">
       <div className="header">
         <SearchBox handleSearch={handleSearch}/>
       </div>
       <div className="products-container ">
-        {data.map((product) => <Product key={product.id} onChecked={onChecked} {...product} />)}
+        {data.map((product) => (
+          <Product 
+            key={product.id}
+            onChecked={onChecked}
+            {...product}
+          />
+        ))}
       </div>
-      <div className="actions">
+      <div className="actions product">
         <Button
           name="Add to cart"
           handleClick={handleAddToCart}
