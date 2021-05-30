@@ -38,12 +38,15 @@ const ProductsList = () => {
     dispatch({type: ACTIONS.CLEAR_SELECTED_PRODUCTS});
   }
 
-  const handleSearch = debounce((e) => {
-    console.log()
+  const handleSearch = debounce(({target : {value}}) => {
+    dispatch({type: ACTIONS.FILTER_PRODUCT, search: value})
   }, 300)
 
 
-  const {error, status, data}  = state;
+  let {error, status, data, search}  = state;
+  if(search || search.length >0) {
+    data = data.filter(({name}) => name.toLowerCase().indexOf(search.toLowerCase())>-1)
+  }
   const isLoading = status === STATUS.IDLE || status === STATUS.PENDING;
   const isRejected = status === STATUS.REJECTED;
   const disabled = !data.filter((item) => item.checked).length;
@@ -76,7 +79,7 @@ const ProductsList = () => {
   return (
     <div className="section">
       <div className="header">
-        <SearchBox handleSearch={handleSearch}/>
+        <SearchBox handleSearch={handleSearch} />
       </div>
       <div className="products-container ">
         {renderProduct()}
