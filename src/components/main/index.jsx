@@ -1,3 +1,4 @@
+import { CartProvider } from '../../context/cart';
 import { ProductProvider } from '../../context/product';
 import Cart from '../cart';
 import ProductsList from '../products';
@@ -7,9 +8,11 @@ const Main = () => (
   <main>
     <div className="main-container">
       <ProductProvider>
-        <ProductsList />
+        <CartProvider>
+          <ProductsList />
+          <Cart />
+        </CartProvider>
       </ProductProvider>
-      <Cart />
     </div>
     
   </main>
