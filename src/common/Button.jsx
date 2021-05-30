@@ -1,3 +1,4 @@
+import { memo } from "react";
 
 const Button = ({name, handleClick, type, ...rest}) => (
   <button
@@ -9,5 +10,5 @@ const Button = ({name, handleClick, type, ...rest}) => (
   </button>
 )
 
-export default Button;
+export default memo(Button);
 

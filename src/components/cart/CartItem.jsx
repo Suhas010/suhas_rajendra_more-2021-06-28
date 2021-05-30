@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { currency } from "../../utils/helper";
 
 const CartItem = ({id, name, count, price, color}) => (
@@ -20,4 +21,4 @@ const CartItem = ({id, name, count, price, color}) => (
   </div>
 )
 
-export default CartItem;
+export default memo(CartItem);
