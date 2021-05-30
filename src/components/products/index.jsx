@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import Button from '../../common/Button';
 import Info from '../../common/Error';
 import Loading from '../../common/Loading';
