@@ -4,10 +4,14 @@ const ProductContext = React.createContext()
 
 const initialProductState = {
   data: [],
-  selected: [],
   status: STATUS.IDLE
 }
-
+const updateData = (arr, {id,checked}) => arr.map((item) => {
+  if(item.id == id) {
+    item.checked = checked;
+  }
+  return item;
+})
 function ProductProvider({ ...props}) {
   const [state, dispatch] = React.useReducer(
     (state, action) => {
@@ -36,14 +40,14 @@ function ProductProvider({ ...props}) {
         case ACTIONS.PRODUCT_CHECKED: {
           return {
             ...state,
-            selected : [...state.selected, action.payload]
+            data : updateData(state.data, action.payload)
           }
         }
-        case ACTIONS.PRODUCT_UNCHECKED: {
-          let { selected } = state;
+
+        case ACTIONS.CLEAR_SELECTED_PRODUCTS: {
           return {
             ...state,
-            selected: selected.filter(({id}) => id !== action.id)
+            data: state.data.map((item) => {item.checked = false; return item})
           }
         }
       }

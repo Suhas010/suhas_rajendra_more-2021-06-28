@@ -34,13 +34,11 @@ const ProductsList = () => {
   }
 
   
-  const onChecked = ({target: {checked, id}}) => {
-    if(checked)
-      dispatch({type: ACTIONS.PRODUCT_CHECKED, id})
-    if(!checked)
-      dispatch({type: ACTIONS.PRODUCT_UNCHECKED, id})
-  }
+  const onChecked = ({target}) => {
+    dispatch({type: ACTIONS.PRODUCT_CHECKED, payload:target})
   
+  }
+
   const handleAddToCart = (e) => {
     dispatchCart({type: ACTIONS.ADD_TO_CART, payload: data.filter((item) => item.checked)});
     dispatch({type: ACTIONS.CLEAR_SELECTED_PRODUCTS});

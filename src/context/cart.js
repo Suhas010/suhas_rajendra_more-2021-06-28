@@ -1,8 +1,8 @@
 import * as React from 'react'
 import { ACTIONS, STATUS } from '../utils/constants'
-const ProductContext = React.createContext()
+const CartContext = React.createContext()
 
-const initialProductState = {
+const initialCartState = {
   data: {},
 }
 
@@ -11,8 +11,8 @@ const getCartData = (data, selectedProducts) => {
     if(data[id]) {
       data = {
         ...data,
-        [id] : {
-          ...rest,
+        [id]: {
+          ...data[id],
           count: data[id].count + 1
         }
       }
@@ -21,12 +21,13 @@ const getCartData = (data, selectedProducts) => {
         ...data,
         [id]: {
           ...rest,
+          id: id,
           count: 1
+        }
       }
     }
-  }
-  return data;
   })
+  return data;
 }
 
 function CartProvider({ ...props}) {
@@ -55,15 +56,15 @@ function CartProvider({ ...props}) {
         }
       }
     },
-    initialProductState,
+    initialCartState,
   )
 
   const value = [state, dispatch]
-  return <ProductContext.Provider value={value} {...props} />
+  return <CartContext.Provider value={value} {...props} />
 }
 
 function useCart() {
-  const context = React.useContext(ProductContext)
+  const context = React.useContext(CartContext)
   if (context === undefined) {
     throw new Error(`useCart must be used within a CartProvider`)
   }
