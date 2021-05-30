@@ -8,13 +8,14 @@ main {
   flex-direction: row;
 }
 .main-container > .section {
+  
   flex: 50%;
   border: 1px solid;
 }
 .cart-container, .products-container {
-  min-height: 400px;
   overflow: hidden;
   overflow-y: scroll;
+  min-height: 400px;
   height: 500px;
   padding: 5%;
   margin: 1%;
@@ -27,9 +28,9 @@ main {
     flex-direction: column;
   }
   .main-container > .section {
-    flex:auto
+    flex: auto;
   }
-  .main-container > .products-container {
+  .cart-container, .products-container {
     min-height: 200px;
     overflow: hidden;
     overflow-y: scroll;

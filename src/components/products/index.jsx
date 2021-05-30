@@ -1,13 +1,19 @@
 import { useEffect, useState } from 'react';
 import Button from '../../common/Button';
+import Info from '../../common/Error';
+import Loading from '../../common/Loading';
+import SearchBox from '../../common/SearchBox';
 import { useCart } from '../../context/cart';
 import { useProduct } from '../../context/product';
 import { ACTIONS, STATUS } from '../../utils/constants';
+import { debounce } from '../../utils/helper';
 import Product from './product';
 import './products.css'
 const ProductsList = () => {
+
   const [state, dispatch] = useProduct();
-  const [,dispatchCart] = useCart()
+  const [,dispatchCart] = useCart();
+
   useEffect(() => {
     const getData = async () => {
       try {
@@ -22,18 +28,7 @@ const ProductsList = () => {
     getData()
   }, [])
 
-  const {error, status, data}  = state;
-  const isLoading = status === STATUS.IDLE || status === STATUS.PENDING;
-  const isRejected = status === STATUS.REJECTED;
-  const disabled = !data.filter((item) => item.checked).length
-  if(isLoading) {
-    return <h2>Loading ....</h2>
-  }
-  if(isRejected) {
-    return <h2>Error</h2>
-  }
 
-  
   const onChecked = ({target}) => {
     dispatch({type: ACTIONS.PRODUCT_CHECKED, payload:target})
   
@@ -44,10 +39,35 @@ const ProductsList = () => {
     dispatch({type: ACTIONS.CLEAR_SELECTED_PRODUCTS});
   }
 
+  const handleSearch = debounce((e) => {
+    console.log()
+  }, 300)
+
+
+  const {error, status, data}  = state;
+  const isLoading = status === STATUS.IDLE || status === STATUS.PENDING;
+  const isRejected = status === STATUS.REJECTED;
+  const disabled = !data.filter((item) => item.checked).length;
+
+  if(isLoading) {
+    return (
+      <Loading />
+    )
+  }
+  if(isRejected || error) {
+    return (
+      <Info
+        title="Error"
+        type="error"
+        message="Something went wrong, Please try again later."
+      />
+    )
+  }
+
   return (
     <div className="section">
       <div className="header">
-        Search
+        <SearchBox handleSearch={handleSearch}/>
       </div>
       <div className="products-container ">
         {data.map((product) => <Product key={product.id} onChecked={onChecked} {...product} />)}
