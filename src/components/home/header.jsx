@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { memo, useContext } from "react";
 import Image from "../../common/Image";
 import moon from '../../assets/moon.svg';
 import sun from '../../assets/sun.svg';
@@ -14,7 +14,7 @@ const Header = () => {
         <Image
           onClick={toggle}
           src={sun}
-          alt="Sun Icon"
+          alt="Change theme to light"
           className="theam-icon"
         />
       )}
@@ -22,7 +22,7 @@ const Header = () => {
         <Image
           onClick={toggle}
           src={moon}
-          alt="Moon Icon"
+          alt="Change theme to dark"
           className="theam-icon"
         />
       )}
@@ -30,4 +30,4 @@ const Header = () => {
   );
 }
 
-export default Header
+export default memo(Header)
