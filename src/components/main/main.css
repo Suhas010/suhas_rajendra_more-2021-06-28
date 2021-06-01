@@ -21,7 +21,11 @@ main {
   height: 500px;
   padding: 5%;
   margin: 1%;
+  box-shadow: inset 0px 1px 13px 4px #eee;
+  border: 1px solid #eee;
+  border-radius: 8px;
 }
+
 
 .header {
   text-align: center;
